@@ -1,0 +1,4 @@
+services:
+#    cbnb_admin.example:
+#        class: CBNBAdminBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

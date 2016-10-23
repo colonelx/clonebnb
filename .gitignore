@@ -14,3 +14,6 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/src/CBNBAdminBundle/Resources/node_modules
+/src/CBNBAdminBundle/Resources/css
+.idea

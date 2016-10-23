@@ -1,0 +1,57 @@
+.admin {
+  #admin-column-left {
+    background: $dark-gray;
+    color: $white;
+    a,a::after  {
+      color: $white;
+    }
+    a::after {
+      border-color: $white transparent;
+    }
+    a:hover{
+      font-weight: bold;
+    }
+    .title {
+      font-family: $cbnb-head-font;
+      text-shadow: 2px 2px $black;
+    }
+    #admin-main-menu {
+      z-index:2;
+      li:hover {
+        background: $black;
+      }
+      .spacer:hover {
+        background: none;
+      }
+    }
+  }
+  .callout.primary h1 {
+    text-shadow: 2px 2px $black;
+  }
+  .column {
+    padding-bottom: 20px;
+  }
+  .infobox {
+    border: 1px solid $medium-gray;
+    margin-top: 5px;
+    padding: 5px;
+    .header {
+      background: $medium-gray;
+    }
+  }
+  .infobox:hover {
+
+    box-shadow: 0 0 10px $black;
+  }
+
+  @media #{$medium-up} {
+    .off-canvas-content, .off-canvas-content {
+      box-shadow: none;
+    }
+
+  }
+  @media #{$small-up} {
+
+  }
+
+}

@@ -1,3 +1,9 @@
-app:
-    resource: "@AppBundle/Controller/"
+cbnb_admin:
+    resource: "@CBNBAdminBundle/Controller/"
     type:     annotation
+    prefix:   /admin
+
+app:
+    resource: "@CBNBFEBundle/Controller/"
+    type:     annotation
+    prefix:   /

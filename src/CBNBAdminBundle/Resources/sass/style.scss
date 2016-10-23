@@ -1,0 +1,12 @@
+@import 'fonts';
+
+@import 'mixins'; // Variables
+@import 'foundation-overrides';
+@import 'foundation'; // Path is defined in Gulpfile
+
+
+
+@include foundation-everything;
+
+@import 'global'; // Global area declarations
+@import 'calendar';
