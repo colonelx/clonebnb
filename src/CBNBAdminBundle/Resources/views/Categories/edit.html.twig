@@ -1,0 +1,9 @@
+{% extends "::base.html.twig" %}
+{% block title %}{{ "Edit category"|trans }}: "{{ category.name }}"{% endblock %}
+{% block body %}
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="{{ "Save changes"|trans }}" class="submit-btn" />
+    {{ form_end(edit_form) }}
+{% endblock %}

@@ -79,7 +79,16 @@ assetic:
     assets:
             foundation:
                 inputs:
-                    - '@CBNBAdminBundle/Resources/js/libs/foundation/foundation.min.js'
+                    - '../app/Resources/js/libs/foundation/foundation.min.js'
             jquery:
                 inputs:
-                    - '@CBNBAdminBundle/Resources/js/libs/jquery/jquery.min.js'
+                    - '../app/Resources/js/libs/jquery/jquery.min.js'
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: CBNBUserBundle\Entity\User
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: CBNB\Migrations
+    table_name: migration_versions
+    name: CBNB Application Migrations

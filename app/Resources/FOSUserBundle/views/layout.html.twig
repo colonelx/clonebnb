@@ -1,0 +1,135 @@
+<!--start top -->
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>CloneBNB - Administration Area</title>
+    <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+
+    {% stylesheets '../app/Resources/css/style.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body class="admin">
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+        {% if app.user %}
+            <div class="off-canvas position-left reveal-for-large" id="admin-column-left" data-off-canvas data-position="left">
+                <div class="row column">
+                    <br>
+                    <h3 class="title">CloneBNB</h3>
+                    <ul id="admin-main-menu" class="vertical menu" data-accordion-menu>
+
+                        <li><a href="#">Dashboard</a></li>
+                        <li>
+                            <a href="#">Bookings</a>
+                            <ul class="menu vertical nested">
+                                <li><a href="#">Awaiting</a></li>
+                                <li><a href="#">Approved</a></li>
+                                <li><a href="#">Denied</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#">Categories</a>
+                            <ul class="menu vertical nested">
+                                <li><a href="#">Add new</a></li>
+                                <li><a href="#">List all</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Areas</a>
+                            <ul class="menu vertical nested">
+                                <li><a href="#">Add new</a></li>
+                                <li><a href="#">List all</a></li>
+                            </ul>
+                        </li>
+                        <li class="spacer">&nbsp;</li>
+                        <li><a href="#">Messages</a>
+                            <ul class="menu vertical nested">
+                                <li><a href="#">Write</a></li>
+                                <li><a href="#">Unread (0)</a></li>
+                                <li><a href="#">Archive</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="spacer">&nbsp;</li>
+                        <li><a href="#">Users</a>
+                            <ul class="menu vertical nested">
+                                <li><a href="#">Landlords</a></li>
+                                <li><a href="#">Tenants</a></li>
+                                <li><a href="#">Site Managers</a></li>
+                            </ul>
+                        </li>
+                        <li class="spacer">&nbsp;</li>
+
+                        <li><a href="#">System Settings</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+        <div class="off-canvas-content" data-off-canvas-content>
+            <div class="title-bar hide-for-large">
+                <div class="title-bar-left">
+                    <button class="menu-icon" type="button" data-open="admin-column-left"></button>
+                    <span class="title-bar-title">CloneBNB</span>
+                </div>
+            </div>
+            <!-- end top -->
+            <!-- start main page -->
+            <div class="callout primary">
+                <div class="row column">
+                    <h1>{{ "Clone BNB"|trans }} / {{ "Login"|trans }}</h1>
+                </div>
+            </div>
+            <div class="row small-up-1 medium-up-1 large-up-2">
+                <div>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                </div>
+
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="{{ type }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div>
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
+            <!-- end main page -->
+            <!-- start footer -->
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% javascripts
+'@jquery'
+'@foundation'
+
+'../app/Resources/js/web/base.js'
+output='/js/app.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
+
+
+<!-- end footer -->
