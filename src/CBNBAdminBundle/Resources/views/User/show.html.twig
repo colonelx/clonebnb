@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block title %} User {{ user.firstName }} {{ user.lastName }} {% endblock %}
+
+{% block body %}
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ user.gender }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{% if user.birthDate %}{{ user.birthDate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Cityofresidance</th>
+                <td>{{ user.cityOfResidence }}</td>
+            </tr>
+            <tr>
+                <th>Countryofresidence</th>
+                <td>{{ user.countryOfResidence }}</td>
+            </tr>
+            <tr>
+                <th>Avatarfilename</th>
+                <td>{{ user.avatarFilename }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_user_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
